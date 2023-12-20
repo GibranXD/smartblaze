@@ -8,10 +8,14 @@ import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import androidx.activity.viewModels
+import androidx.navigation.Navigation.findNavController
+import androidx.navigation.findNavController
+import androidx.navigation.ui.setupWithNavController
 import com.example.smartblazeapp.R
 import com.example.smartblazeapp.ViewModelFactory
 import com.example.smartblazeapp.databinding.ActivityMainBinding
 import com.example.smartblazeapp.welcome.WelcomeActivity
+import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class MainActivity : AppCompatActivity() {
 
@@ -28,8 +32,8 @@ class MainActivity : AppCompatActivity() {
 
         var token = ""
 
-        supportActionBar?.show()
-        supportActionBar?.title = "SmartBlaze"
+        supportActionBar?.hide()
+
 
         viewModel.getSession().observe(this) { user ->
             if (!user.isLogin) {
@@ -41,22 +45,12 @@ class MainActivity : AppCompatActivity() {
 //                startActivity(Intent(this, MainActivity::class.java))
             }
         }
+        val navView: BottomNavigationView = binding.navView
+
+        val navController = findNavController(R.id.nav_host)
+        navView.setupWithNavController(navController)
     }
 
-    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
-        menuInflater.inflate(R.menu.menu_main, menu)
-        return super.onCreateOptionsMenu(menu)
-    }
-
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        when(item.itemId){
-            R.id.action_logout -> {
-                viewModel.logout()
-            }
-
-        }
-        return super.onOptionsItemSelected(item)
-    }
 
 
 }

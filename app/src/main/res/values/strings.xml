@@ -17,4 +17,8 @@
     <string name="dummyname">Gibran</string>
     <string name="dummydesc">Lorem ipsum sit dolor amet, lorem ipsum sit dolor amet</string>
     <string name="dark_mode">Dark Mode</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="home">Home</string>
+    <string name="profile">Profile</string>
 </resources>
